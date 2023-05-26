@@ -1,0 +1,82 @@
+
+**Tables:**
+
+1. **Teams**
+   - team_id (Primary Key)
+   - team_name
+   - coach_name
+   - country
+
+2. **Players**
+   - player_id (Primary Key)
+   - team_id (Foreign Key to Teams table)
+   - player_name
+   - position
+   - date_of_birth
+   - nationality
+
+3. **Matches**
+   - match_id (Primary Key)
+   - home_team_id (Foreign Key to Teams table)
+   - away_team_id (Foreign Key to Teams table)
+   - match_date
+   - stadium_id (Foreign Key to Stadiums table)
+   - referee_id (Foreign Key to Referees table)
+
+4. **Goals**
+   - goal_id (Primary Key)
+   - match_id (Foreign Key to Matches table)
+   - player_id (Foreign Key to Players table)
+   - team_id (Foreign Key to Teams table)
+   - goal_time
+
+5. **YellowCards**
+   - card_id (Primary Key)
+   - match_id (Foreign Key to Matches table)
+   - player_id (Foreign Key to Players table)
+   - team_id (Foreign Key to Teams table)
+   - card_time
+
+6. **RedCards**
+   - card_id (Primary Key)
+   - match_id (Foreign Key to Matches table)
+   - player_id (Foreign Key to Players table)
+   - team_id (Foreign Key to Teams table)
+   - card_time
+
+7. **Referees**
+   - referee_id (Primary Key)
+   - referee_name
+   - nationality
+
+8. **Stadiums**
+   - stadium_id (Primary Key)
+   - stadium_name
+   - city
+   - country
+   - capacity
+
+9. **Tournaments**
+   - tournament_id (Primary Key)
+   - tournament_name
+   - start_date
+   - end_date
+   - host_country
+
+10. **TournamentMatches**
+    - tournament_match_id (Primary Key)
+    - tournament_id (Foreign Key to Tournaments table)
+    - match_id (Foreign Key to Matches table)
+
+11. **TournamentStandings**
+    - tournament_standings_id (Primary Key)
+    - tournament_id (Foreign Key to Tournaments table)
+    - team_id (Foreign Key to Teams table)
+    - total_matches
+    - wins
+    - draws
+    - losses
+    - goals_for
+    - goals_against
+    - points
+
