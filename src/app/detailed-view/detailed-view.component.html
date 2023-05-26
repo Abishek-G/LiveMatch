@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined|Material+Icons" rel="stylesheet" />
+</head>
+
+<body>
+	<div class="container">
+		<div class="match" *ngFor="let team of teams">
+			<div *ngIf="team.status == 'Live'">
+				<div class="match-header">
+					<div class="match-status" [ngClass]="{'ended': team.status !== 'Live'}">{{team.status}}</div>
+					<div class="match-tournament"><img src="https://assets.codepen.io/285131/pl-logo.svg" />NEC Premiere
+						League</div>
+				</div>
+				<div class="match-content">
+					<div class="column">
+						<div class="team team--home">
+							<div class="team-logo">
+								<img [src]="team.homelogo" />
+							</div>
+							<h2 class="team-name">{{team.homeTeam}}</h2>
+						</div>
+					</div>
+					<div class="column">
+						<div class="match-details">
+							<div class="match-date">
+								{{team.date | date:'dd MMM yyyy'}} <strong>{{team.startTime| date:'hh:mm'}}</strong>
+							</div>
+							<div class="match-score">
+								<span class="match-score-number" >{{team.homeScore}}</span>
+								<span class="match-score-divider">:</span>
+								<span class="match-score-number">{{team.awayScore}}</span>
+							</div>
+							<div class="match-time-lapsed">
+								72'
+							</div>
+							<div class="match-referee">
+								Referee: <strong>{{team.referee}}</strong>
+							</div>
+						</div>
+					</div>
+					<div class="column">
+						<div class="team team--away">
+							<div class="team-logo">
+								<img [src]="team.awaylogo" />
+							</div>
+							<h2 class="team-name">{{team.awayTeam}}</h2>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="container">
+			<h3>Match Details</h3>
+				<table class="table table-bordered text-center">
+					<thead class="thead-dark">
+						<tr>
+							<th scope="col">Home Team</th>
+							<th scope="col">Away Team</th>
+							<th scope="col">Started at</th>
+							<th scope="col">Refree</th>
+							<th scope="col">Venue</th>
+						</tr>
+					</thead>
+					<tbody *ngFor="let team of teams">
+						<tr *ngIf="team.status=='Live'">
+							<td>{{team.home_team}}</td>
+							<td>{{team.away_team}}</td>
+							<td>{{team.date|date: 'hh:mm a'}}</td>
+							<td>{{team.refree}}</td>
+							<td>{{team.venue}}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+</body>
+
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined|Material+Icons" rel="stylesheet" />
+</head>
+
+<body>
+	<div class="container main mx-auto">
+		<div *ngFor="let team of teams">
+			<div class="match" *ngIf="team.status == 'Live'">
+				<div class="match-header"> 
+					<div class="match-status" [ngClass]="{'ended': team.status !== 'Live'}">{{team.status}}</div>
+					<div class="match-tournament"><img src="https://assets.codepen.io/285131/pl-logo.svg" />NEC Premiere
+						League</div>
+				</div>
+				<div class="match-content">
+					<div class="column">
+						<div class="team team--home">
+							<div class="team-logo">
+								<img [src]="team.homelogo" />
+							</div>
+							<h2 class="team-name">{{team.home_team}}</h2>
+						</div>
+					</div>
+					<div class="column">
+						<div class="match-details">
+							<div class="match-score">
+								<span class="match-score-number ">{{team.homeScore}}</span>
+								<span class="match-score-divider">:</span>
+								<span class="match-score-number">{{team.awayScore}}</span>
+							</div>
+							<div class="detailed-view"  (click)="showNextPage(team)">
+								<a>Detailed View</a>
+							</div>
+						</div>
+					</div>
+					<div class="column">
+						<div class="team team--away">
+							<div class="team-logo">
+								<img [src]="team.awaylogo" />
+							</div>
+							<h2 class="team-name">{{team.away_team}}</h2>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+</body>
+
+</html>
